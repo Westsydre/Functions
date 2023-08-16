@@ -57,7 +57,6 @@ const newPassport = function (person) {
 
 newPassport(emmanuel);
 checkIn(flight, emmanuel);
-*/
 
 // Functions Accepting Callback Functions
 const oneWord = function (str) {
@@ -69,6 +68,7 @@ const upperFirstWord = function (str) {
   return [first.toUpperCase(), ...others].join(' ');
 };
 
+// Higher-order function
 const transformer = function (str, fn) {
   console.log(`Original string: ${str}`);
   console.log(`Transformed string: ${fn(str)}`);
@@ -79,10 +79,32 @@ const transformer = function (str, fn) {
 transformer('JavaScript is the best', upperFirstWord);
 transformer('JavaScript is the best', oneWord);
 
-// JS uses
+// JS uses it all the time
 const high5 = function () {
   console.log('👋');
 };
 
 document.body.addEventListener('click', high5);
 ['Emmanuel', 'Eve', 'Adam'].forEach(high5);
+*/
+
+// Functions Returning Functions
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet('Hey');
+greeterHey('Emmanuel');
+greeterHey('Daniel');
+
+greet('Hello')('Emmanuel');
+
+const greet1 = greeting => name => console.log(`${greeting} ${name}`);
+
+const greeterHey1 = greet1('Hi');
+greeterHey1('Emmanuel');
+greeterHey1('Daniel');
+
+greet1('Hi')('Emmanuel');
